@@ -1,2 +1,25 @@
+# Development tools
 .aider*
 .env
+
+# Rust
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Debug
+*.pdb
+
+# Generated documentation
+/target/doc/
+
+# OS-specific
+.DS_Store
+Thumbs.db
