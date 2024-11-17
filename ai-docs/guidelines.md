@@ -178,6 +178,59 @@ This document serves as the central reference for all architectural decisions, c
    - Minimal memory footprint
    - Efficient configuration loading
 
+## Error Handling Patterns
+
+### Rust vs C# Error Handling
+- Instead of C#'s try/catch blocks, Rust uses Result<T,E>
+- Example comparison:
+
+```csharp
+// C# exception handling
+try {
+    var file = File.OpenRead("config.json");
+    // ... use file
+} catch (FileNotFoundException ex) {
+    logger.LogError(ex);
+    return null;
+}
+```
+
+```rust
+// Rust Result handling
+let file = match File::open("config.json") {
+    Ok(file) => file,
+    Err(e) => {
+        log::error!("{}", e);
+        return None;
+    }
+};
+```
+
+### Project Error Handling Guidelines
+1. **Custom Error Types**
+   ```rust
+   pub enum KeylineError {
+       ConfigError(String),
+       CommandError { cmd: String, details: String },
+       LoggingError(std::io::Error),
+   }
+   ```
+
+2. **Error Propagation**
+   - Use the `?` operator (similar to C#'s await)
+   - Chain Results with map_err() for context
+   - Avoid unwrap() in production code
+
+3. **Error Logging Strategy**
+   - Log errors at their source
+   - Include context and stack information
+   - Use appropriate log levels
+
+4. **User-Facing Errors**
+   - Convert internal errors to user-friendly messages
+   - Localize error messages
+   - Include actionable information
+
 ## Code Style & Standards
 - Follow the official Rust style guide
 - Use `rustfmt` for consistent formatting
