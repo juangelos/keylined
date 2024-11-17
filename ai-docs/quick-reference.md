@@ -63,15 +63,20 @@ fn process_command(cmd: &str) -> Result<(), KeylineError> {
 ```
 
 ### 4. Configuration
-```json
-// config/settings.json
-{
-    "ui": {
-        "font_size": 36,
-        "font_family": "Segoe UI",
-        "line_height": 1.2
-    }
-}
+```toml
+# config/settings.toml
+[ui]
+font_size = 36
+font_family = "Segoe UI"
+line_height = 1.2
+
+[behavior]
+edit_mode = "windows"
+error_display = "blink"
+
+[shortcuts]
+activate = "Alt+Space"
+expand = "Alt+Enter"
 ```
 
 ### 5. Debugging Checklist

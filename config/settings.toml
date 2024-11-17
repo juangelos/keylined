@@ -1,0 +1,30 @@
+# Keyline Settings Configuration
+
+[ui]
+font_size = 36
+font_family = "Segoe UI"
+font_weight = "normal"
+line_height = 1.2
+border_color = "#333333"
+background_color = "#FFFFFF"
+text_color = "#000000"
+
+[behavior]
+edit_mode = "windows"
+error_display = "blink"
+error_timeout = 2000
+auto_hide = true
+
+[shortcuts]
+activate = "Alt+Space"
+expand = "Alt+Enter"
+
+[voice]
+wake_word = "hey keyline"
+recognition_mode = "cloud"
+sensitivity = 0.5
+
+[security]
+command_timeout = 30000
+max_history = 1000
+audit_level = "normal"

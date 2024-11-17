@@ -53,10 +53,11 @@ This document serves as the central reference for all architectural decisions, c
      - Failed command attempts
 
 4. **Configuration Architecture**
-   - JSON-based configuration files
+   - TOML-based configuration files with schemas
    - Separate configs for commands and settings
    - Located in `config/` directory
    - Hot-reloading capability
+   - Schema validation on load
 
 ### Technology Choices
 1. **GUI Framework Requirements**

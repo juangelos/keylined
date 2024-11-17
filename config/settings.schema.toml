@@ -1,0 +1,36 @@
+# Settings Schema for Keyline
+# This schema defines the structure and validation rules for settings.toml
+
+[ui]
+# UI configuration settings
+font_size = { type = "integer", default = 36, min = 8, max = 72 }
+font_family = { type = "string", default = "Segoe UI" }
+font_weight = { type = "string", default = "normal", allowed = ["normal", "bold"] }
+line_height = { type = "float", default = 1.2, min = 1.0, max = 2.0 }
+border_color = { type = "string", pattern = "^#[0-9A-Fa-f]{6}$" }
+background_color = { type = "string", pattern = "^#[0-9A-Fa-f]{6}$" }
+text_color = { type = "string", pattern = "^#[0-9A-Fa-f]{6}$" }
+
+[behavior]
+# Application behavior settings
+edit_mode = { type = "string", default = "windows", allowed = ["windows", "emacs"] }
+error_display = { type = "string", default = "blink", allowed = ["blink", "stay"] }
+error_timeout = { type = "integer", default = 2000, min = 500, max = 10000 }
+auto_hide = { type = "boolean", default = true }
+
+[shortcuts]
+# Keyboard shortcut configurations
+activate = { type = "string", default = "Alt+Space" }
+expand = { type = "string", default = "Alt+Enter" }
+
+[voice]
+# Voice recognition settings
+wake_word = { type = "string", default = "hey keyline" }
+recognition_mode = { type = "string", default = "cloud", allowed = ["cloud", "local", "hybrid"] }
+sensitivity = { type = "float", default = 0.5, min = 0.0, max = 1.0 }
+
+[security]
+# Security settings
+command_timeout = { type = "integer", default = 30000, min = 1000, max = 300000 }
+max_history = { type = "integer", default = 1000, min = 0, max = 10000 }
+audit_level = { type = "string", default = "normal", allowed = ["minimal", "normal", "verbose"] }
