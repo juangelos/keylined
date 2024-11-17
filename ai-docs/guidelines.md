@@ -30,10 +30,27 @@ This document serves as the central reference for all architectural decisions, c
    - Configurable via JSON settings
    - Tray icon integration
 
-3. **Command Processing**
+3. **Command Processing & Security**
    - Real-time command validation
    - Extensible command system using OS shell mechanisms
    - Support for built-in commands, scripts, and pipes
+   - Security model:
+     - Command validation and sanitization
+     - Permission levels (user, admin, system)
+     - Execution isolation via job objects
+     - Process resource limits
+     - Command audit logging
+     - Blocked command patterns
+     - Shell injection prevention
+   - Execution contexts:
+     - Restricted: Limited to safe built-in commands
+     - Standard: Regular user permissions
+     - Elevated: Administrative commands
+   - Security logging:
+     - Command execution audit trail
+     - Permission elevation events
+     - Configuration changes
+     - Failed command attempts
 
 4. **Configuration Architecture**
    - JSON-based configuration files
@@ -85,6 +102,24 @@ This document serves as the central reference for all architectural decisions, c
      - Command piping
    - Error handling with visual feedback
    - Hot-reloading of command definitions
+   - Security requirements:
+     - Command whitelist/blacklist system
+     - Regular expression pattern matching for validation
+     - Windows security token handling
+     - Process creation with restricted tokens
+     - Job object creation and management
+     - Resource quota enforcement
+     - Audit logging to Windows Event Log
+     - Configuration change detection
+   - Execution isolation:
+     - Separate desktop for elevated commands
+     - Process job object containment
+     - Network access controls
+     - File system restrictions
+   - Permission management:
+     - UAC integration
+     - Privilege elevation prompts
+     - Token filtering
 
 4. **Performance Requirements**
    - Instant UI display (<100ms) on activation
