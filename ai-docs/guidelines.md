@@ -142,6 +142,35 @@ This document serves as the central reference for all architectural decisions, c
      - DEBUG: Configuration changes
    - Optional log encryption
    - Log file location configurable
+   
+   Example log entry format:
+   ```json
+   {
+     "timestamp": "2024-11-17T10:15:30.123Z",
+     "level": "INFO",
+     "event": "command_execution",
+     "data": {
+       "command": "notepad.exe",
+       "user": "current_user",
+       "permission_level": "standard",
+       "execution_context": "shell",
+       "process_id": 1234,
+       "resource_usage": {
+         "cpu_time_ms": 100,
+         "peak_memory_kb": 1024
+       }
+     },
+     "result": {
+       "status": "success",
+       "exit_code": 0
+     }
+   }
+   ```
+
+   Log file naming convention:
+   - Active log: keyline-audit-YYYY-MM-DD.log
+   - Compressed archives: keyline-audit-YYYY-MM-DD.log.gz
+   - Location: %LOCALAPPDATA%/Keyline/logs/ (Windows)
 
 5. **Performance Requirements**
    - Instant UI display (<100ms) on activation
@@ -170,6 +199,10 @@ src/
 ├── config/            # Configuration handling
 │   ├── settings.rs    # Settings management
 │   └── commands.rs    # Command definitions
+├── logging/           # Audit logging system
+│   ├── audit.rs       # Audit log implementation
+│   ├── rotation.rs    # Log rotation and management
+│   └── format.rs      # Log formatting and schemas
 └── voice/             # Voice recognition
     ├── wake_word.rs   # Local wake word detection
     ├── cloud.rs      # Cloud speech recognition
