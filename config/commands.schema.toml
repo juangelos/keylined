@@ -26,3 +26,44 @@ timeout = { type = "integer", default = 30000, min = 1000, max = 300000 }
 inherit_env = { type = "boolean", default = true }
 env_vars = { type = "table", optional = true }
 path_extensions = { type = "array", items = "string", optional = true }
+# Schema for command configuration files
+
+# Top-level command properties
+name = { type = "string", required = true, pattern = "^[a-z0-9-]+$" }
+description = { type = "string", required = true, min_length = 1, max_length = 100 }
+executable = { type = "string", required = true }
+icon = { type = "string", required = true, pattern = "^[\\p{Emoji_Presentation}]$" }
+
+# Permissions table
+[permissions]
+elevation = { type = "string", required = true, values = ["user", "admin", "system"] }
+requires_confirmation = { type = "boolean", required = true }
+
+# Validation table  
+[validation]
+timeout = { type = "integer", required = true, min = 1000, max = 300000 }
+
+# Optional arguments
+[arguments]
+type = "array"
+items = { type = "string" }
+required = false
+
+# Optional environment variables
+[environment]
+type = "table"
+required = false
+key_pattern = "^[A-Z_][A-Z0-9_]*$"
+value_type = "string"
+
+# Optional working directory
+[working_directory]
+type = "string" 
+required = false
+
+# Optional resource limits
+[limits]
+cpu_percent = { type = "integer", min = 1, max = 100 }
+memory_mb = { type = "integer", min = 1 }
+file_handles = { type = "integer", min = 1 }
+child_processes = { type = "integer", min = 0 }
