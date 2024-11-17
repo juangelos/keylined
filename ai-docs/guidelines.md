@@ -109,19 +109,41 @@ This document serves as the central reference for all architectural decisions, c
      - Process creation with restricted tokens
      - Job object creation and management
      - Resource quota enforcement
-     - Audit logging to Windows Event Log
+     - Audit logging to structured log files
+     - Log rotation and retention policies
      - Configuration change detection
    - Execution isolation:
-     - Separate desktop for elevated commands
-     - Process job object containment
-     - Network access controls
-     - File system restrictions
+     - Process sandboxing using platform-appropriate mechanisms
+     - Network access controls via configuration
+     - File system access restrictions
+     - Resource usage limits (CPU, memory, file handles)
    - Permission management:
      - UAC integration
      - Privilege elevation prompts
      - Token filtering
 
-4. **Performance Requirements**
+4. **Audit Logging Requirements**
+   - JSON-structured log files with:
+     - Timestamp (UTC)
+     - Command executed
+     - User context
+     - Permission level
+     - Execution result
+     - Resource usage
+   - Log management:
+     - Daily rotation
+     - Compression of old logs
+     - Configurable retention period
+     - Size-based rotation
+   - Log levels:
+     - ERROR: Command failures
+     - WARN: Permission elevation
+     - INFO: Successful commands
+     - DEBUG: Configuration changes
+   - Optional log encryption
+   - Log file location configurable
+
+5. **Performance Requirements**
    - Instant UI display (<100ms) on activation
    - Native OS command execution
    - Minimal memory footprint
