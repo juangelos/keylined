@@ -1,11 +1,11 @@
-use keyline_core::prelude::*;
+use keylined_core::prelude::*;
 
 #[test]
 fn test_error_conversion() {
     // Test converting IO errors to our Error type
     let io_err = std::io::Error::new(std::io::ErrorKind::NotFound, "test error");
     let our_err: Error = io_err.into();
-    
+
     match our_err {
         Error::Io(_) => (),
         _ => panic!("Expected Io error variant"),

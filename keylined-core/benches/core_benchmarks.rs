@@ -2,7 +2,7 @@
 
 extern crate test;
 use test::Bencher;
-use keyline_core::prelude::*;
+use keylined_core::prelude::*;
 
 #[bench]
 fn bench_error_creation(b: &mut Bencher) {

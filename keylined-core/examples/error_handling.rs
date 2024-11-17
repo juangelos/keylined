@@ -1,10 +1,10 @@
-use keyline_core::prelude::*;
+use keylined_core::prelude::*;
 
 fn main() -> Result<()> {
     // Example of handling different error types
     let result = do_something_fallible()?;
     println!("Operation succeeded: {}", result);
-    
+
     // Example of error conversion
     if let Err(e) = do_something_with_io() {
         println!("Operation failed: {}", e);

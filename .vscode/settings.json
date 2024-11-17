@@ -1,6 +1,8 @@
 {
     "editor.formatOnSave": true,
-    "editor.rulers": [100],
+    "editor.rulers": [
+        100
+    ],
     "editor.renderWhitespace": "all",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
