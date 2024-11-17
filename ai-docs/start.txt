@@ -1,0 +1,1 @@
+/architect Please read ai-docs\system_prompt.txt as if I typed it for you.
