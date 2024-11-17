@@ -6,6 +6,12 @@
         "tamasfe.even-better-toml",
         "mhutchie.git-graph",
         "eamodio.gitlens",
-        "davidanson.vscode-markdownlint"
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.powershell",
+        "christian-kohler.path-intellisense",
+        "wayou.vscode-todo-highlight",
+        "gruntfuggly.todo-tree",
+        "shardulm94.trailing-spaces"
     ]
 }
