@@ -1,11 +1,11 @@
 [workspace]
 resolver = "2"
 members = [
-    "keylined",           # Main application binary
-    "keylined-core",      # Core library functionality
-    "keylined-config",    # Configuration handling
-    "keylined-ui",        # UI components
-    "keylined-commands",  # Command processing
+    "keylined",          # Main application binary
+    "keylined-core",     # Core library functionality
+    "keylined-config",   # Configuration handling
+    "keylined-ui",       # UI components
+    "keylined-commands", # Command processing
 ]
 
 [workspace.package]
@@ -13,7 +13,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Keyline Contributors"]
 license = "MIT"
-repository = "https://github.com/yourusername/keyline"
+repository = "https://github.com/juangelos/keylined"
 
 [workspace.dependencies]
 # Core dependencies
@@ -31,7 +31,10 @@ iced_native = "0.10"
 iced_style = "0.9"
 
 # Windows-specific
-windows = { version = "0.52", features = ["Win32_Foundation", "Win32_UI_WindowsAndMessaging"] }
+windows = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+] }
 
 # Testing
 test-case = "3.3"

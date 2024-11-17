@@ -1,9 +1,9 @@
-//! Keyline - Fast command execution tool
+//! Keylined - Fast command execution tool
 //!
 //! This is the main binary crate that ties together all the components.
 
-use keylined_core::error::Result;
 use keylined_config::Config;
+use keylined_core::error::Result;
 use keylined_ui::app::App;
 use log::info;
 
@@ -11,7 +11,7 @@ use log::info;
 async fn main() -> Result<()> {
     // Initialize logging
     env_logger::init();
-    info!("Starting Keyline...");
+    info!("Starting Keylined...");
 
     // Load configuration
     let config = Config::load()?;

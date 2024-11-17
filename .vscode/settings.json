@@ -3,7 +3,7 @@
     "editor.rulers": [
         100
     ],
-    "editor.renderWhitespace": "all",
+    "editor.renderWhitespace": "none",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
     "rust-analyzer.checkOnSave.command": "clippy",
@@ -17,6 +17,7 @@
     "rust-analyzer.lens.references.method.enable": true,
     "cSpell.words": [
         "clippy",
+        "keylined",
         "rustc",
         "rustfmt",
         "rustup"

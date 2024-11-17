@@ -1,2 +1,4 @@
+/chat-mode architect
 /add ai-docs/*  docs/*
-/architect Please read ai-docs\system_prompt.txt as if I typed it for you, you don't need to edit any files
+Please read ai-docs\system_prompt.txt as if I typed it for you, you don't need to edit any files
+/drop

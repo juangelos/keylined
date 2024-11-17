@@ -1,0 +1,22 @@
+[package]
+name = "keylined-ui"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+keyline-core = { path = "../keylined-core" }
+iced.workspace = true
+iced_native.workspace = true
+iced_style.workspace = true
+tokio.workspace = true
+log.workspace = true
+thiserror.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows.workspace = true
+
+[dev-dependencies]
+test-case.workspace = true
+mockall.workspace = true
