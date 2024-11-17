@@ -15,7 +15,43 @@ This document serves as the central reference for all architectural decisions, c
 5. [Documentation Requirements](#documentation-requirements)
 
 ## Architecture Decisions
-TBD based on project requirements
+
+### Core Architecture Principles
+1. **Performance First**
+   - Instant command-line display on activation
+   - Native OS mechanisms for command execution
+   - No web-based technologies (no webview/browser components)
+   - Minimal resource usage for voice recognition
+
+2. **UI Architecture**
+   - Native GUI implementation
+   - Single-line command input as primary interface
+   - Configurable via JSON settings
+   - Tray icon integration
+
+3. **Command Processing**
+   - Real-time command validation
+   - Extensible command system using OS shell mechanisms
+   - Support for built-in commands, scripts, and pipes
+
+4. **Configuration Architecture**
+   - JSON-based configuration files
+   - Separate configs for commands and settings
+   - Located in `config/` directory
+   - Hot-reloading capability
+
+### Technology Choices
+1. **GUI Framework Requirements**
+   - Native performance
+   - CSS-like styling capability
+   - Custom window management
+   - Global keyboard shortcuts
+
+2. **Voice Recognition Requirements**
+   - Low-compute wake word detection
+   - Two-phase voice recognition:
+     a. Lightweight wake word detection
+     b. Full command recognition
 
 ## Code Style & Standards
 - Follow the official Rust style guide
@@ -24,7 +60,26 @@ TBD based on project requirements
 - Document all public APIs
 
 ## Project Structure
-TBD based on project type
+```
+src/
+├── main.rs              # Application entry point
+├── ui/                  # UI components
+│   ├── command_line.rs  # Main command line widget
+│   └── tray.rs         # System tray implementation
+├── commands/           # Command processing
+│   ├── parser.rs      # Command parsing and validation
+│   └── executor.rs    # Command execution
+├── config/            # Configuration handling
+│   ├── settings.rs    # Settings management
+│   └── commands.rs    # Command definitions
+└── voice/             # Voice recognition
+    ├── wake_word.rs   # Wake word detection
+    └── recognition.rs # Full speech recognition
+
+config/
+├── settings.json      # UI and behavior settings
+└── commands.json      # Command definitions
+```
 
 ## Testing Strategy
 - Unit tests alongside implementation files
