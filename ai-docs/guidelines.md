@@ -43,11 +43,17 @@ This document serves as the central reference for all architectural decisions, c
 
 ### Technology Choices
 1. **GUI Framework Requirements**
-   - Windows-native performance using Direct2D/DirectWrite
-   - Windows-style styling capability (for fonts, colors, spacing)
-   - Custom window management via Win32 API (borderless window, draggable)
-   - Global keyboard shortcuts using Windows hooks
-   - Windows shell integration
+   - Use `iced` with native Windows backend for optimal performance
+   - Styling through `iced`'s theme system:
+     - Custom fonts via DirectWrite
+     - Color schemes and spacing
+     - Responsive layout engine
+   - Native window management:
+     - Borderless window implementation
+     - Custom titlebar and dragging
+     - Global hotkey registration
+   - Windows shell integration via native APIs
+   - Hardware-accelerated rendering using Direct2D/DirectWrite
    - Text input with rich editing capabilities:
      - Windows/Emacs keybinding modes
      - Selection and navigation
@@ -89,6 +95,8 @@ src/
 ├── main.rs              # Application entry point
 ├── ui/                  # UI components
 │   ├── command_line.rs  # Main command line widget
+│   ├── theme.rs         # Iced theme customization
+│   ├── styles.rs        # Component-specific styles
 │   └── tray.rs         # System tray implementation
 ├── commands/           # Command processing
 │   ├── parser.rs      # Command parsing and validation
