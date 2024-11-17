@@ -16,6 +16,9 @@ pub enum Error {
 
     #[error("IO error: {0}")]
     Io(#[from] std::io::Error),
+
+    #[error("Logging error: {0}")]
+    Logging(String),
 }
 
 /// Result type for Keyline operations
