@@ -1,10 +1,10 @@
 //! Keyline - Fast command execution tool
-//! 
+//!
 //! This is the main binary crate that ties together all the components.
 
-use keyline_core::error::Result;
-use keyline_config::Config;
-use keyline_ui::app::App;
+use keylined_core::error::Result;
+use keylined_config::Config;
+use keylined_ui::app::App;
 use log::info;
 
 #[tokio::main]

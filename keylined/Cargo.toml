@@ -1,15 +1,15 @@
 [package]
-name = "keyline"
+name = "keylined"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
 
 [dependencies]
-keyline-core = { path = "../keyline-core" }
-keyline-config = { path = "../keyline-config" }
-keyline-ui = { path = "../keyline-ui" }
-keyline-commands = { path = "../keyline-commands" }
+keylined-core = { path = "../keylined-core" }
+keylined-config = { path = "../keylined-config" }
+keylined-ui = { path = "../keylined-ui" }
+keylined-commands = { path = "../keylined-commands" }
 
 tokio.workspace = true
 log.workspace = true

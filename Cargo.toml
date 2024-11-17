@@ -1,11 +1,11 @@
 [workspace]
 resolver = "2"
 members = [
-    "keyline",           # Main application binary
-    "keyline-core",      # Core library functionality
-    "keyline-config",    # Configuration handling
-    "keyline-ui",        # UI components
-    "keyline-commands",  # Command processing
+    "keylined",           # Main application binary
+    "keylined-core",      # Core library functionality
+    "keylined-config",    # Configuration handling
+    "keylined-ui",        # UI components
+    "keylined-commands",  # Command processing
 ]
 
 [workspace.package]

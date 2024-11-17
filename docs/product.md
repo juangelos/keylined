@@ -1,5 +1,9 @@
 # Keylined
 
+## Product name
+
+The name of the product shall be "Keylined".
+
 ## Product description
 
 A cool little app written in Rust that gives you an instant input text box and an open microphone to be able to execute commands to use your computer.
