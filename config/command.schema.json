@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["name", "description", "executable", "icon"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Command identifier using lowercase letters, numbers, and hyphens"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Brief description of what the command does"
+    },
+    "executable": {
+      "type": "string",
+      "description": "Path or name of the executable to run"
+    },
+    "icon": {
+      "type": "string",
+      "pattern": "^[\\p{Emoji_Presentation}]$",
+      "description": "Single emoji character to represent the command"
+    },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "elevation": {
+          "type": "string",
+          "enum": ["user", "admin", "system"],
+          "default": "user",
+          "description": "Required privilege level for execution"
+        },
+        "requires_confirmation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether user confirmation is required before execution"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "timeout": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 300000,
+          "default": 30000,
+          "description": "Maximum execution time in milliseconds"
+        }
+      }
+    }
+  }
+}

@@ -1,64 +1,116 @@
-# Settings Schema for Keyline
-# This schema defines the structure and validation rules for settings.toml
+# Schema for settings configuration file
 
-[ui]
-# UI configuration settings
-font_size = { type = "integer", default = 36, min = 8, max = 72 }
-font_family = { type = "string", default = "Segoe UI" }
-font_weight = { type = "string", default = "normal", allowed = ["normal", "bold"] }
-line_height = { type = "float", default = 1.2, min = 1.0, max = 2.0 }
-border_color = { type = "string", pattern = "^#[0-9A-Fa-f]{6}$" }
-background_color = { type = "string", pattern = "^#[0-9A-Fa-f]{6}$" }
-text_color = { type = "string", pattern = "^#[0-9A-Fa-f]{6}$" }
+# Settings schema version
+version = "1.0"
 
-[behavior]
-# Application behavior settings
-edit_mode = { type = "string", default = "windows", allowed = ["windows", "emacs"] }
-error_display = { type = "string", default = "blink", allowed = ["blink", "stay"] }
-error_timeout = { type = "integer", default = 2000, min = 500, max = 10000 }
-auto_hide = { type = "boolean", default = true }
+# Schema definition
+[schema]
+type = "object"
 
-[shortcuts]
-# Keyboard shortcut configurations
-activate = { type = "string", default = "Alt+Space" }
-expand = { type = "string", default = "Alt+Enter" }
+[[schema.fields]]
+name = "ui"
+type = "table"
 
-[voice]
-# Voice recognition settings
-wake_word = { type = "string", default = "hey keyline" }
-recognition_mode = { type = "string", default = "cloud", allowed = ["cloud", "local", "hybrid"] }
-sensitivity = { type = "float", default = 0.5, min = 0.0, max = 1.0 }
+[[schema.fields.fields]]
+name = "font_size"
+type = "integer"
+default = 36
+min = 8
+max = 72
 
-[security]
-# Security settings
-command_timeout = { type = "integer", default = 30000, min = 1000, max = 300000 }
-max_history = { type = "integer", default = 1000, min = 0, max = 10000 }
-audit_level = { type = "string", default = "normal", allowed = ["minimal", "normal", "verbose"] }
-# Schema for global settings
+[[schema.fields.fields]]
+name = "font_family"
+type = "string"
+default = "Segoe UI"
 
-[commands]
-# Command execution settings
-default_timeout = { type = "integer", default = 30000, min = 1000, max = 300000 }
-max_concurrent = { type = "integer", default = 10, min = 1, max = 100 }
-history_size = { type = "integer", default = 1000, min = 0, max = 10000 }
+[[schema.fields.fields]]
+name = "font_weight"
+type = "string"
+default = "normal"
+allowed = ["normal", "bold"]
 
-[security] 
-# Security-related settings
-allow_admin_elevation = { type = "boolean", default = true }
-require_confirmation_threshold = { type = "integer", default = 3, min = 0 }
-blocked_executables = { type = "array", items = "string" }
-allowed_working_dirs = { type = "array", items = "string" }
+[[schema.fields.fields]]
+name = "line_height"
+type = "float"
+default = 1.2
+min = 1.0
+max = 2.0
 
-[logging]
-# Audit logging configuration  
-enabled = { type = "boolean", default = true }
-level = { type = "string", values = ["error", "warn", "info", "debug"], default = "info" }
-file_path = { type = "string" }
-rotation_days = { type = "integer", default = 30, min = 1 }
-max_size_mb = { type = "integer", default = 100, min = 1 }
+[[schema.fields.fields]]
+name = "border_color"
+type = "string"
+pattern = "^#[0-9A-Fa-f]{6}$"
 
-[ui]
-# User interface settings
-theme = { type = "string", values = ["light", "dark", "system"], default = "system" }
-font_size = { type = "integer", default = 12, min = 8, max = 32 }
-opacity = { type = "float", default = 0.95, min = 0.5, max = 1.0 }
+[[schema.fields.fields]]
+name = "background_color"
+type = "string"
+pattern = "^#[0-9A-Fa-f]{6}$"
+
+[[schema.fields.fields]]
+name = "text_color"
+type = "string"
+pattern = "^#[0-9A-Fa-f]{6}$"
+
+[[schema.fields]]
+name = "behavior"
+type = "table"
+
+[[schema.fields.fields]]
+name = "edit_mode"
+type = "string"
+default = "windows"
+allowed = ["windows", "emacs"]
+
+[[schema.fields.fields]]
+name = "error_display"
+type = "string"
+default = "blink"
+allowed = ["blink", "stay"]
+
+[[schema.fields.fields]]
+name = "error_timeout"
+type = "integer"
+default = 2000
+min = 500
+max = 10000
+
+[[schema.fields.fields]]
+name = "auto_hide"
+type = "boolean"
+default = true
+
+[[schema.fields]]
+name = "shortcuts"
+type = "table"
+
+[[schema.fields.fields]]
+name = "activate"
+type = "string"
+default = "Alt+Space"
+
+[[schema.fields.fields]]
+name = "expand"
+type = "string"
+default = "Alt+Enter"
+
+[[schema.fields]]
+name = "voice"
+type = "table"
+
+[[schema.fields.fields]]
+name = "wake_word"
+type = "string"
+default = "hey keyline"
+
+[[schema.fields.fields]]
+name = "recognition_mode"
+type = "string"
+default = "cloud"
+allowed = ["cloud", "local", "hybrid"]
+
+[[schema.fields.fields]]
+name = "sensitivity"
+type = "float"
+default = 0.5
+min = 0.0
+max = 1.0
