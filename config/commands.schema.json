@@ -1,0 +1,73 @@
+{
+  "command": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "executable": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "optional": true
+    },
+    "working_dir": {
+      "type": "string",
+      "optional": true
+    },
+    "args": {
+      "type": "array",
+      "items": "string",
+      "optional": true
+    }
+  },
+  "permissions": {
+    "elevation": {
+      "type": "string",
+      "default": "user",
+      "allowed": ["user", "admin", "system"]
+    },
+    "requires_confirmation": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validation": {
+    "allowed_patterns": {
+      "type": "array",
+      "items": "string",
+      "optional": true
+    },
+    "blocked_patterns": {
+      "type": "array",
+      "items": "string",
+      "optional": true
+    },
+    "timeout": {
+      "type": "integer",
+      "default": 30000,
+      "min": 1000,
+      "max": 300000
+    }
+  },
+  "environment": {
+    "inherit_env": {
+      "type": "boolean",
+      "default": true
+    },
+    "env_vars": {
+      "type": "object",
+      "optional": true
+    },
+    "path_extensions": {
+      "type": "array",
+      "items": "string",
+      "optional": true
+    }
+  }
+}
