@@ -5,6 +5,7 @@
 - TOML configuration system with schema validation
 - Basic command validation and execution
 - Windows-native shell integration
+- Global hotkey support
 - Minimal tray icon presence
 - Error handling and basic logging
 
@@ -12,7 +13,6 @@
 - Advanced command validation
 - Audit logging system
 - Enhanced UI with themes
-- Global hotkey support
 - Improved error feedback
 - Configuration hot-reloading
 
