@@ -18,10 +18,11 @@ This document serves as the central reference for all architectural decisions, c
 
 ### Core Architecture Principles
 1. **Performance First**
-   - Instant command-line display on activation
-   - Native OS mechanisms for command execution
+   - Instant command-line display on activation (<100ms)
+   - Windows-native mechanisms for command execution
    - No web-based technologies (no webview/browser components)
    - Minimal resource usage for voice recognition
+   - Windows-optimized UI rendering
 
 2. **UI Architecture**
    - Native GUI implementation
@@ -42,10 +43,11 @@ This document serves as the central reference for all architectural decisions, c
 
 ### Technology Choices
 1. **GUI Framework Requirements**
-   - Native performance
-   - CSS-like styling capability (for fonts, colors, spacing)
-   - Custom window management (borderless window, draggable)
-   - Global keyboard shortcuts
+   - Windows-native performance using Direct2D/DirectWrite
+   - Windows-style styling capability (for fonts, colors, spacing)
+   - Custom window management via Win32 API (borderless window, draggable)
+   - Global keyboard shortcuts using Windows hooks
+   - Windows shell integration
    - Text input with rich editing capabilities:
      - Windows/Emacs keybinding modes
      - Selection and navigation
