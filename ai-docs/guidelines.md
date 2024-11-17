@@ -43,15 +43,37 @@ This document serves as the central reference for all architectural decisions, c
 ### Technology Choices
 1. **GUI Framework Requirements**
    - Native performance
-   - CSS-like styling capability
-   - Custom window management
+   - CSS-like styling capability (for fonts, colors, spacing)
+   - Custom window management (borderless window, draggable)
    - Global keyboard shortcuts
+   - Text input with rich editing capabilities:
+     - Windows/Emacs keybinding modes
+     - Selection and navigation
+     - Multi-line support with dynamic height
+   - System tray integration
+   - Real-time visual feedback for command validation
 
 2. **Voice Recognition Requirements**
    - Low-compute wake word detection
    - Two-phase voice recognition:
-     a. Lightweight wake word detection
+     a. Lightweight wake word detection ("hey KeyLine")
      b. Full command recognition
+   - Minimal latency and resource usage
+
+3. **Command Processing Requirements**
+   - Real-time command validation
+   - Support for:
+     - Built-in commands
+     - Shell scripts
+     - Command piping
+   - Error handling with visual feedback
+   - Hot-reloading of command definitions
+
+4. **Performance Requirements**
+   - Instant UI display (<100ms) on activation
+   - Native OS command execution
+   - Minimal memory footprint
+   - Efficient configuration loading
 
 ## Code Style & Standards
 - Follow the official Rust style guide
