@@ -1,0 +1,20 @@
+[package]
+name = "keyline"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+keyline-core = { path = "../keyline-core" }
+keyline-config = { path = "../keyline-config" }
+keyline-ui = { path = "../keyline-ui" }
+keyline-commands = { path = "../keyline-commands" }
+
+tokio.workspace = true
+log.workspace = true
+env_logger.workspace = true
+
+[dev-dependencies]
+test-case.workspace = true
+mockall.workspace = true
