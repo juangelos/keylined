@@ -62,11 +62,20 @@ This document serves as the central reference for all architectural decisions, c
    - Real-time visual feedback for command validation
 
 2. **Voice Recognition Requirements**
-   - Low-compute wake word detection
-   - Two-phase voice recognition:
-     a. Lightweight wake word detection ("hey KeyLine")
-     b. Full command recognition
-   - Minimal latency and resource usage
+   - Dual-mode voice recognition system:
+     a. Pre-activation Mode:
+        - Lightweight local wake word detection ("Hey KeyLine")
+        - Minimal CPU/memory footprint (<2% CPU, <50MB RAM)
+        - Uses Whisper.cpp or similar local lightweight model
+        - Always running in background
+     b. Command Mode:
+        - Cloud-based full speech recognition
+        - Activated via microphone button or wake word
+        - Support for major cloud providers (Azure, AWS, GCP)
+        - Fallback to local processing when offline
+   - Error handling and feedback for both modes
+   - Configurable activation phrases
+   - Audio input device selection
 
 3. **Command Processing Requirements**
    - Real-time command validation
@@ -105,8 +114,10 @@ src/
 │   ├── settings.rs    # Settings management
 │   └── commands.rs    # Command definitions
 └── voice/             # Voice recognition
-    ├── wake_word.rs   # Wake word detection
-    └── recognition.rs # Full speech recognition
+    ├── wake_word.rs   # Local wake word detection
+    ├── cloud.rs      # Cloud speech recognition
+    ├── offline.rs    # Offline fallback recognition
+    └── common.rs     # Shared voice recognition types
 
 config/
 ├── settings.json      # UI and behavior settings
