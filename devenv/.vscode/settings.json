@@ -1,6 +1,9 @@
 {
     "editor.formatOnSave": true,
     "editor.rulers": [100],
+    "editor.renderWhitespace": "all",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.checkOnSave.allTargets": true,
     "rust-analyzer.cargo.allFeatures": true,
@@ -10,7 +13,25 @@
     "rust-analyzer.lens.implementations.enable": true,
     "rust-analyzer.lens.references.adt.enable": true,
     "rust-analyzer.lens.references.method.enable": true,
+    "cSpell.words": [
+        "clippy",
+        "rustc",
+        "rustfmt",
+        "rustup"
+    ],
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX"
+    ],
+    "todo-tree.highlights.defaultHighlight": {
+        "foreground": "white",
+        "background": "#ffbd2a",
+        "iconColour": "#ffbd2a"
     }
 }

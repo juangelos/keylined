@@ -11,7 +11,8 @@
             "args": [],
             "cwd": "${workspaceFolder}",
             "env": {
-                "RUST_BACKTRACE": "1"
+                "RUST_BACKTRACE": "1",
+                "RUST_LOG": "debug"
             }
         },
         {
@@ -24,8 +25,31 @@
             "args": [],
             "cwd": "${workspaceFolder}",
             "env": {
-                "RUST_BACKTRACE": "1"
+                "RUST_BACKTRACE": "1",
+                "RUST_LOG": "debug"
             }
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug Example",
+            "cargo": {
+                "args": ["build", "--example", "${input:cargoExample}"]
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "RUST_BACKTRACE": "1",
+                "RUST_LOG": "debug"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "cargoExample",
+            "type": "promptString",
+            "description": "Name of the example to run",
+            "default": "hello"
         }
     ]
 }
