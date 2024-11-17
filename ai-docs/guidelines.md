@@ -295,10 +295,52 @@ This document serves as the central reference for all architectural decisions, c
    }
    ```
 
-### IDE Setup Tips
-1. Use VS Code with rust-analyzer extension
-2. Install LLDB debugger extension
-3. Configure tasks.json for build/test commands
+### Windows Development & Debugging Tips
+1. **IDE Setup**
+   - Use VS Code with rust-analyzer extension
+   - Install CodeLLDB or Microsoft C++ extensions
+   - Configure tasks.json for build/test commands
+   - Enable "Developer Mode" in Windows Settings
+
+2. **Windows-Specific Debugging**
+   - Use Windows Event Viewer for system-level issues
+   - Enable Debug logging: `$env:RUST_LOG="debug"`
+   - Use Process Monitor for file/registry access
+   - Debug privilege elevation with:
+     ```rust
+     #[cfg(windows)]
+     fn check_admin() -> bool {
+         use windows_sys::Win32::Security::Authorization::IsUserAnAdmin;
+         unsafe { IsUserAnAdmin() != 0 }
+     }
+     ```
+
+3. **Common Windows Issues**
+   - Path issues: Use `std::path::PathBuf` for Windows paths
+   - Handle UTF-16 strings for WinAPI calls
+   - Check file permissions with Process Monitor
+   - Debug COM components with OleView
+
+4. **Performance Profiling**
+   - Use Windows Performance Recorder (WPR)
+   - ETW tracing for system events
+   - Process Explorer for real-time monitoring
+   - Sample commands for our project:
+     ```powershell
+     # CPU profiling
+     wpr -start CPU
+     # run your test scenario
+     wpr -stop cpu_profile.etl
+     ```
+
+5. **Project-Specific Tools**
+   - Debug tray icon: Use Spy++ to monitor messages
+   - Voice recognition: Windows Sound settings
+   - Command execution: Process Monitor filters
+     ```
+     Process Name is keyline.exe
+     Operation is Process Create
+     ```
 
 ### Common Gotchas
 1. No null values - use Option<T> instead
