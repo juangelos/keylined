@@ -1,30 +1,3 @@
 # Keyline Commands Configuration
-
-[[command]]
-name = "notepad"
-description = "Open Windows Notepad"
-executable = "notepad.exe"
-icon = "📝"
-
-[command.permissions]
-elevation = "user"
-requires_confirmation = false
-
-[command.validation]
-timeout = 30000
-
-[[command]]
-name = "admin-cmd"
-description = "Open elevated Command Prompt"
-executable = "cmd.exe"
-icon = "⚡"
-
-[command.permissions]
-elevation = "admin"
-requires_confirmation = true
-
-[command.validation]
-timeout = 60000
-
-
+# Individual command configurations are stored in the commands/ directory
 

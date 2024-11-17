@@ -1,0 +1,11 @@
+name = "admin-cmd"
+description = "Open elevated Command Prompt"
+executable = "cmd.exe"
+icon = "⚡"
+
+[permissions]
+elevation = "admin"
+requires_confirmation = true
+
+[validation]
+timeout = 60000

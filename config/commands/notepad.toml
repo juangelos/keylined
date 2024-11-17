@@ -1,0 +1,11 @@
+name = "notepad"
+description = "Open Windows Notepad"
+executable = "notepad.exe"
+icon = "📝"
+
+[permissions]
+elevation = "user"
+requires_confirmation = false
+
+[validation]
+timeout = 30000
