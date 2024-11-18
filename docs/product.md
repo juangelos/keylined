@@ -26,6 +26,22 @@ press Enter.
 - one particular feature will be to have a set of folders that the tool will scan and continuously watch for executable commands (eg. .sh, .ps1, .cmd, .py, .csx, etc.), and will add them to the autocomplete list, and be able to execute them with their proper shell or interpreter ("handler") (eg. .sh will be executed with bash, .py will be executed with python, etc.). We should find a convention for the tool to be able to read from the scripts a short description of the command, so that the tool can show it in the autocomplete list as a tooltip.
 - if a command has parameters, they should be able to be typed in the input box and the tool will know how to pass them to the appropriate handler to execute the command with the parameters.
 
+### Plugins
+Similar to how https://pre-commit.com/#plugins plugins work: you can add a file that contains a repo url to the commands folder, which imports a series of commands,
+and you can override their settings like pre-commit does.
+```The repository mapping tells pre-commit where to get the code for the command from.
+repo: the repository url to git clone from or one of the special sentinel values: local, meta.
+rev: the revision or tag to clone at.
+commands: A list of command mappings.
+
+A sample repository:
+
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v1.2.3
+    commands:
+    - ...```
+
 ## Target audience
 
 The main target audience is intermediate users of the computer, who want to streamline their work and be able to use the computer with speed and efficiency. For this audience we should have some sort of online repository of commands that they can search and import. A secondary audience is computer experts who want to be able to use the computer with speed and efficiency, and are able to write their own commands and scripts to share with the community. I should be easy for them to share their commands and scripts with the community.

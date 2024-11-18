@@ -1,22 +1,35 @@
 # Rust Project Guidelines
 
 ## Document Version
+
 - Version: 1.0
 - Date: 2024-11-17
 
 ## Purpose
+
 This document serves as the central reference for all architectural decisions, coding standards, and best practices for our Rust project.
 
 ## Table of Contents
-1. [Architecture Decisions](#architecture-decisions)
-2. [Code Style & Standards](#code-style--standards)
-3. [Project Structure](#project-structure)
-4. [Testing Strategy](#testing-strategy)
-5. [Documentation Requirements](#documentation-requirements)
+
+- [Rust Project Guidelines](#rust-project-guidelines)
+  - [Document Version](#document-version)
+  - [Purpose](#purpose)
+  - [Table of Contents](#table-of-contents)
+  - [Architecture Decisions](#architecture-decisions)
+    - [Core Architecture Principles](#core-architecture-principles)
+    - [Technology Choices](#technology-choices)
+  - [Error Handling Patterns](#error-handling-patterns)
+    - [Rust vs C# Error Handling](#rust-vs-c-error-handling)
+    - [Project Error Handling Guidelines](#project-error-handling-guidelines)
+  - [Code Style \& Standards](#code-style--standards)
+  - [Project Structure](#project-structure)
+  - [Testing Strategy](#testing-strategy)
+  - [Documentation Requirements](#documentation-requirements)
 
 ## Architecture Decisions
 
 ### Core Architecture Principles
+
 1. **Performance First**
    - Instant command-line display on activation (<100ms)
    - Windows-native mechanisms for command execution
@@ -27,7 +40,7 @@ This document serves as the central reference for all architectural decisions, c
 2. **UI Architecture**
    - Native GUI implementation
    - Single-line command input as primary interface
-   - Configurable via JSON settings
+   - Configurable via TOML settings
    - Tray icon integration
 
 3. **Command Processing & Security**
@@ -60,6 +73,7 @@ This document serves as the central reference for all architectural decisions, c
    - Schema validation on load
 
 ### Technology Choices
+
 1. **GUI Framework Requirements**
    - Use `iced` with native Windows backend for optimal performance
    - Styling through `iced`'s theme system:
@@ -143,8 +157,9 @@ This document serves as the central reference for all architectural decisions, c
      - DEBUG: Configuration changes
    - Optional log encryption
    - Log file location configurable
-   
+
    Example log entry format:
+
    ```json
    {
      "timestamp": "2024-11-17T10:15:30.123Z",
@@ -179,10 +194,10 @@ This document serves as the central reference for all architectural decisions, c
    - Minimal memory footprint
    - Efficient configuration loading
 
-
 ## Error Handling Patterns
 
 ### Rust vs C# Error Handling
+
 - Instead of C#'s try/catch blocks, Rust uses Result<T,E>
 - Example comparison:
 
@@ -209,7 +224,9 @@ let file = match File::open("config.json") {
 ```
 
 ### Project Error Handling Guidelines
+
 1. **Custom Error Types**
+
    ```rust
    pub enum KeylineError {
        ConfigError(String),
@@ -234,13 +251,15 @@ let file = match File::open("config.json") {
    - Include actionable information
 
 ## Code Style & Standards
+
 - Follow the official Rust style guide
 - Use `rustfmt` for consistent formatting
 - Use `clippy` for linting
 - Document all public APIs
 
 ## Project Structure
-```
+
+```text
 src/
 ├── main.rs              # Application entry point
 ├── ui/                  # UI components
@@ -270,11 +289,13 @@ config/
 ```
 
 ## Testing Strategy
+
 - Unit tests alongside implementation files
 - Integration tests in separate tests directory
 - Documentation tests for public APIs
 
 ## Documentation Requirements
+
 - All public APIs must have documentation comments
 - Update CHANGELOG.md for significant changes
 - Maintain architecture decisions in this document
